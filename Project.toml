@@ -1,0 +1,8 @@
+name = "LaTeXTables"
+uuid = "7a882280-b7a3-40b8-8de0-0a56d356bc86"
+authors = ["szcf-weiya <szcfweiya@gmail.com>"]
+version = "0.1.0"
+
+[deps]
+HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
+Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
