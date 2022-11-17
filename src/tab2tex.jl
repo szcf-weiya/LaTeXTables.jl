@@ -226,16 +226,16 @@ function print2tex(μ::AbstractVector{T}, σ::AbstractVector{T};
     end
 end
 
-function print2tex(μ::AbstractVector{T}, σ::AbstractVector{T}, 
-                    rownames::AbstractVector{String}, colnames::AbstractVector{String},
-                    subrownames::AbstractVector{String}, subcolnames::AbstractVector{String}; 
+function print2tex(μ::AbstractVector{<:AbstractMatrix}, σ::AbstractVector{<:AbstractMatrix}, 
+                    rownames::AbstractVector{<:AbstractString}, colnames::AbstractVector{<:AbstractString},
+                    subrownames::AbstractVector{<:AbstractString}, subcolnames::AbstractVector{<:AbstractString}; 
                     colnames_of_rownames = ["level0", "level1"], file = "/tmp/tmp.tex",
                     other_cols = nothing, other_col_names = nothing,
                     other_cols_σ = nothing,
                     right_cols = nothing, right_col_names = nothing,
                     isbf = nothing,
                     right_align = 'l', # a better way?
-                    sigdigits = 4) where T <: AbstractMatrix
+                    sigdigits = 4)
     @assert length(rownames) == length(μ) == length(σ)
     nrow = length(μ)
     rowlevel = 2
