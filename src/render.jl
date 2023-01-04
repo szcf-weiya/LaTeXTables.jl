@@ -13,8 +13,13 @@ function tex2png(file::String, url = "https://quicklatex.com/latex3.f")
     \usepackage{booktabs}
     """
     content = String(read(file))
-    content = replace(content, "&"=>"%26", "%"=>"%25")
-    preamble = replace(preamble, "&"=>"%26", "%"=>"%25")
+    if VERSION >= v"1.7.0"
+        content = replace(content, "&"=>"%26", "%"=>"%25")
+        preamble = replace(preamble, "&"=>"%26", "%"=>"%25")
+    else
+        content = replace(replace(content, "%"=>"%25"), "&"=>"%26") # NB: first replace %
+        preamble = replace(replace(preamble, "%"=>"%25"), "&"=>"%26")
+    end
     post_data = "formula=" * content * "&mode=0&out=1&preamble=" * preamble
     r = HTTP.request("POST", url, [], post_data)
     ret = String(r.body)
