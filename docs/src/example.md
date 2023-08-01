@@ -90,8 +90,27 @@ tex2png("ex2.tex")
 
 ```@example 1
 right = [[rand(3), rand(3)]]
-print2tex(μ, σ, ["A", "B"], ["a", "b"], ["1","2","3"], ["x", "y"], file = "ex3.tex", other_cols = others, other_col_names = ["other"], other_cols_σ = others_σ, right_cols = right, right_col_names = ["right"])
+print2tex(μ, σ, ["A", "B"], ["a", "b"], ["1","2","3"], ["x", "y"], file = "ex3.tex", 
+                                                                other_cols = others, 
+                                                                other_col_names = ["other"], 
+                                                                other_cols_σ = others_σ, 
+                                                                right_cols = right, 
+                                                                right_col_names = ["right"])
 tex2png("ex3.tex")
 ```
 
 ![](ex3.png)
+
+Particularly, if the column is p-value, we can annotate the significance with star symbols, like `?symnum` in R.
+
+```@example 1
+pval = [star_pval.(right[1] / 100)]
+print2tex(μ, σ, ["A", "B"], ["a", "b"], ["1","2","3"], ["x", "y"], file = "ex4.tex", 
+                                                                other_cols = others, 
+                                                                other_col_names = ["other"], 
+                                                                other_cols_σ = others_σ, 
+                                                                right_cols = pval, right_col_names = ["pval"])
+tex2png("ex4.tex")
+```
+
+![](ex4.png)

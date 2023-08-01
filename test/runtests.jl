@@ -28,3 +28,8 @@ using LaTeXTables
         print2tex(μ, σ, ["A", "B"], ["a", "b"], ["1","2","3"], ["x", "y"], file = filepath, other_cols = others, other_col_names = ["other"], other_cols_σ = others_σ, right_cols = right, right_col_names = ["right"])
     end
 end
+
+@testset "star pvalues" begin
+    res = star_pval([0.0001, 0.005, 0.049, 0.09, 0.11])
+    @test res == ["1.00e-04 (***)", "5.00e-03 (**)", "4.90e-02 (*)", "9.00e-02 (.)", "1.10e-01"]
+end
