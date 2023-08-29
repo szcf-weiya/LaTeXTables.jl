@@ -169,6 +169,14 @@ function print2tex(A::AbstractMatrix, rownames::AbstractVector{String}, colnames
         for j = 1:nrow
             write(io, rownames[j])
             for i = 1:ncol
+                if isa(A[j, i], String)
+                    if !isnothing(isbf) && isbf[j, i]
+                        write(io, "& \\textbf{", A[j, i], "}")
+                    else
+                        write(io, "&", A[j, i])
+                    end
+                    continue
+                end
                 if length(A[j, i]) == 1
                     if !isnothing(isbf) && isbf[j, i]
                         write(io, "& \\textbf{", (@sprintf "%.2e" A[j, i]), "}")
@@ -182,7 +190,7 @@ function print2tex(A::AbstractMatrix, rownames::AbstractVector{String}, colnames
                         write(io, "& (", (@sprintf "%.2e" A[j, i][1]), ", ", (@sprintf "%.2e" A[j, i][2]), ")")
                     end
                 else
-                    @warn "not implemented for tuple with length larger than 3"
+                    @warn "not implemented for $(typeof(A[j, i]))"
                 end
             end
             writeline(io, raw"\tabularnewline")
@@ -199,6 +207,10 @@ function print2tex(A::AbstractMatrix, rownames::AbstractVector{String}, colnames
             for j = 1:nrow
                 write(io, rownames[j])
                 for i = 1:ncol
+                    if isa(A2[j, i], String)
+                        write(io, "&", A2[j, i])
+                        continue
+                    end
                     if length(A2[j, i]) == 1
                         write(io, "&", @sprintf "%.2e" A2[j, i])
                     elseif length(A2[j, i]) == 2

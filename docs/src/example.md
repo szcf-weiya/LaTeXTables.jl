@@ -9,6 +9,13 @@ print2tex(A, ["A", "B"], ["col1", "col2", "col3"], file = "ex0.tex")
 tex2png("ex0.tex")
 ```
 
+`A` can also be matrix of strings
+
+```
+print2tex(string.(A), ["A", "B"], ["col1", "col2", "col3"], file = "ex00.tex")
+tex2png("ex00.tex")
+```
+
 ![](ex0.png)
 
 ### Tuple in a cell

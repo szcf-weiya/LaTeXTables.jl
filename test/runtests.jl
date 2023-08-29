@@ -2,6 +2,11 @@ using Test
 using LaTeXTables
 
 @testset "print2tex" begin
+    @testset "single matrix" begin
+        μ = rand(2, 3)
+        print2tex(μ, ["A", "B"], ["1","2","3"], file = "/tmp/test.tex")
+        print2tex(string.(μ), ["A", "B"], ["1","2","3"], file = "/tmp/test.tex")
+    end
     @testset "simple" begin
         μ = [rand(3, 4), rand(3, 4)]
         σ = [rand(3, 4), rand(3, 4)]
