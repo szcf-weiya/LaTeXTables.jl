@@ -25,10 +25,11 @@ handle missing values,
 
 ```@example 1
 A = [1 2 missing; 3 4 5]
-print2tex(A, ["A", "B"], ["col1", "col2", "col3"], file = "ex0_missing.tex")
+print2tex(A, ["A", "B"], ["col1", "col2", "col3"], file = "ex0m.tex")
+tex2png("ex0m.tex")
 ```
 
-![](ex0_missing.png)
+![](ex0m.png)
 
 ### Tuple in a cell
 
