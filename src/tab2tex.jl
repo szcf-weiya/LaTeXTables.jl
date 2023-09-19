@@ -169,6 +169,10 @@ function print2tex(A::AbstractMatrix, rownames::AbstractVector{String}, colnames
         for j = 1:nrow
             write(io, rownames[j])
             for i = 1:ncol
+                if isa(A[j, i], Missing)
+                    write(io, "& Missing")
+                    continue
+                end
                 if isa(A[j, i], String)
                     if !isnothing(isbf) && isbf[j, i]
                         write(io, "& \\textbf{", A[j, i], "}")
@@ -207,6 +211,10 @@ function print2tex(A::AbstractMatrix, rownames::AbstractVector{String}, colnames
             for j = 1:nrow
                 write(io, rownames[j])
                 for i = 1:ncol
+                    if isa(A2[j, i], Missing)
+                        write(io, "& Missing")
+                        continue
+                    end
                     if isa(A2[j, i], String)
                         write(io, "&", A2[j, i])
                         continue

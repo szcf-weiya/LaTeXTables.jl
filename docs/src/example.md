@@ -13,13 +13,22 @@ tex2png("ex0.tex")
 
 `A` can also be matrix of strings
 
-```
+```@example 1
 print2tex(string.(A), ["A", "B"], ["col1", "col2", "col3"], file = "ex00.tex")
 tex2png("ex00.tex")
 ```
 
 ![](ex00.png)
 
+
+handle missing values,
+
+```@example 1
+A = [1 2 missing; 3 4 5]
+print2tex(A, ["A", "B"], ["col1", "col2", "col3"], file = "ex0_missing.tex")
+```
+
+![](ex0_missing.png)
 
 ### Tuple in a cell
 
