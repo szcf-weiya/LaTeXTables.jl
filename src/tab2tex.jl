@@ -5,7 +5,7 @@ writeline(io, str...) = write(io, str..., "\n")
 # TODO: varied subrows and subcolumns
 # abstractmatrix allows transposes of matrix
 """
-    print2tex()
+    print2tex(A::AbstractVector{T}, rownames::AbstractVector{String}, colnames::AbstractArray{String})
 
 Print a structural result to a latex table.
 
@@ -246,6 +246,29 @@ function print2tex(μ::AbstractVector{T}, σ::AbstractVector{T};
     end
 end
 
+"""
+    print2tex(μ::AbstractVector{<:AbstractMatrix}, σ::AbstractVector{<:AbstractMatrix}, 
+              rownames::AbstractVector{<:AbstractString}, colnames::AbstractVector{<:AbstractString},
+              subrownames::AbstractVector{<:AbstractString}, subcolnames::AbstractVector{<:AbstractString}; )
+
+Two-level rows and two-level columns where each cell is in the format of `μ (σ)` with 
+
+- `rownames` as the first level row name and `subrownames` as the second level row name
+- `colnames` as the first level column name and `subcolnames` as the second level column name.
+
+where a typical example is `μ` denotes the mean value while `σ` represents the standard error.
+
+- The first level column name can be reduced when passing `colnames = [""]`
+
+## Arguments
+
+- `colnames_of_rownames`: the colnames of the columns containing rownames.
+- `isbf`: whether to bold cell, the same size as `μ`
+- `rank_sup`: whether to add superscript for each cell, the same size as `μ`
+- `other_cols`, `other_col_names`, `other_cols_σ`: columns on the left of the two-level columns
+- `right_cols`, `right_col_names`: columns on the right of the two-level columns
+- `file`: tex file path to write
+"""
 function print2tex(μ::AbstractVector{<:AbstractMatrix}, σ::AbstractVector{<:AbstractMatrix}, 
                     rownames::AbstractVector{<:AbstractString}, colnames::AbstractVector{<:AbstractString},
                     subrownames::AbstractVector{<:AbstractString}, subcolnames::AbstractVector{<:AbstractString}; 

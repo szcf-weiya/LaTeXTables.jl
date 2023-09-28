@@ -1,7 +1,7 @@
 name = "LaTeXTables"
 uuid = "7a882280-b7a3-40b8-8de0-0a56d356bc86"
 authors = ["szcf-weiya <szcfweiya@gmail.com>"]
-version = "0.1.4"
+version = "0.1.5"
 
 [deps]
 HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
