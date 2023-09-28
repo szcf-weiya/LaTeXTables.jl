@@ -254,6 +254,7 @@ function print2tex(μ::AbstractVector{<:AbstractMatrix}, σ::AbstractVector{<:Ab
                     other_cols_σ = nothing,
                     right_cols = nothing, right_col_names = nothing,
                     isbf = nothing,
+                    rank_sup = nothing,
                     right_align = 'l', # a better way?
                     sigdigits = 4)
     @assert length(rownames) == length(μ) == length(σ)
@@ -276,42 +277,59 @@ function print2tex(μ::AbstractVector{<:AbstractMatrix}, σ::AbstractVector{<:Ab
     open(file, "w") do io
         write(io, raw"\begin{tabular}{" * repeat('c', ncol + 2 + noc) * repeat(right_align, nor) * raw"}", "\n")
         writeline(io, raw"\toprule")
-        # colnames at the first level
-        # write(io, "&")
-        write(io, raw"\multirow{2}{*}{", colnames_of_rownames[1], "} & ", 
-                  raw"\multirow{2}{*}{", colnames_of_rownames[2], "}")
-        if !isnothing(other_cols)
-            for i = 1:noc
-                write(io, raw"& \multirow{2}{*}{", other_col_names[i], "}")
+        ## colnames at the first level
+        if ncol0 == 1 && colnames[1] == "" # 2-level columns reduced to 1-level column
+            write(io, colnames_of_rownames[1], " & ", colnames_of_rownames[2])
+            if !isnothing(other_cols)
+                for i = 1:noc
+                    write(io, " & ", other_col_names[i])
+                end
             end
-        end
-        for i = 1:ncol0
-            write(io, "&" * raw"\multicolumn{", "$ncol1}{c}{", colnames[i], "}")
-        end
-        if !isnothing(right_cols)
-            for i = 1:nor
-                write(io, raw"& \multirow{2}{*}{", right_col_names[i], "}")
-            end
-        end
-        writeline(io, raw"\tabularnewline")
-        # writeline(io, raw"\cmidrule{3-", "$(ncol+2)}")
-        left = 3 + noc
-        for i = 1:ncol0
-            right = left + ncol1 - 1
-            writeline(io, raw"\cmidrule(lr){", "$left-", "$right}")
-            left = right + 1
-        end
-        # colnames at the second level
-        write(io, "&")
-        for i = 1:noc
-            write(io, "&")
-        end
-        for i = 1:ncol0
             for j = 1:ncol1
                 write(io, "&", subcolnames[j])
             end
+            if !isnothing(right_cols)
+                for i = 1:nor
+                    write(io, " & ", right_col_names[i])
+                end
+            end
+            writeline(io, raw"\tabularnewline")
+        else
+            write(io, raw"\multirow{2}{*}{", colnames_of_rownames[1], "} & ", 
+                    raw"\multirow{2}{*}{", colnames_of_rownames[2], "}")
+            if !isnothing(other_cols)
+                for i = 1:noc
+                    write(io, raw"& \multirow{2}{*}{", other_col_names[i], "}")
+                end
+            end
+            for i = 1:ncol0
+                write(io, "&" * raw"\multicolumn{", "$ncol1}{c}{", colnames[i], "}")
+            end
+            if !isnothing(right_cols)
+                for i = 1:nor
+                    write(io, raw"& \multirow{2}{*}{", right_col_names[i], "}")
+                end
+            end
+            writeline(io, raw"\tabularnewline")
+            # writeline(io, raw"\cmidrule{3-", "$(ncol+2)}")
+            left = 3 + noc
+            for i = 1:ncol0
+                right = left + ncol1 - 1
+                writeline(io, raw"\cmidrule(lr){", "$left-", "$right}")
+                left = right + 1
+            end
+            # colnames at the second level
+            write(io, "&")
+            for i = 1:noc
+                write(io, "&")
+            end
+            for i = 1:ncol0
+                for j = 1:ncol1
+                    write(io, "&", subcolnames[j])
+                end
+            end
+            writeline(io, raw"\tabularnewline")
         end
-        writeline(io, raw"\tabularnewline")
         for i = 1:nrow
             writeline(io, raw"\midrule")
             # μi = round.(μ[i], sigdigits = sigdigits)
@@ -339,6 +357,9 @@ function print2tex(μ::AbstractVector{<:AbstractMatrix}, σ::AbstractVector{<:Ab
                         else
                             write(io, "& $(@sprintf "%.2e" μ[i][j, k]) ($(@sprintf "%.1e" σ[i][j, k]))")
                         end
+                    end
+                    if !isnothing(rank_sup)
+                        write(io, "\\textsuperscript{$(rank_sup[i][j, k])}")
                     end
                 end
                 if !isnothing(right_cols)
