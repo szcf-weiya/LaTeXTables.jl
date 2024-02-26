@@ -115,7 +115,7 @@ tex2png("ex4.tex")
 ```@example 1
 μ = [rand(3, 2)]
 σ = [rand(3, 2)]
-print2tex(μ, σ, [""], [""], ["M1", "M2", "M3"], ["C1", "C2"], colnames_of_rownames = ["Method"])
+print2tex(μ, σ, [""], [""], ["M1", "M2", "M3"], ["C1", "C2"], colnames_of_rownames = ["Method"], file = "ex5.tex")
 tex2png("ex5.tex")
 ```
 
