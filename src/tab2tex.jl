@@ -286,6 +286,7 @@ function print2tex(μ::AbstractVector{<:AbstractMatrix}, σ::AbstractVector{<:Ab
     ncol0 = length(colnames)
     ncol1 = length(subcolnames)
     ncol = ncol0 * ncol1 # plus levels of rownames
+    ncol_row_header = length(colnames_of_rownames)
     if isnothing(other_cols)
         noc = 0
     else
@@ -298,11 +299,14 @@ function print2tex(μ::AbstractVector{<:AbstractMatrix}, σ::AbstractVector{<:Ab
         nor = length(right_cols) # use list
     end
     open(file, "w") do io
-        write(io, raw"\begin{tabular}{" * repeat('c', ncol + 2 + noc) * repeat(right_align, nor) * raw"}", "\n")
+        write(io, raw"\begin{tabular}{" * repeat('c', ncol + ncol_row_header + noc) * repeat(right_align, nor) * raw"}", "\n")
         writeline(io, raw"\toprule")
         ## colnames at the first level
         if ncol0 == 1 && colnames[1] == "" # 2-level columns reduced to 1-level column
-            write(io, colnames_of_rownames[1], " & ", colnames_of_rownames[2])
+            for ii in 1:ncol_row_header-1
+                write(io, colnames_of_rownames[ii], " & ")                
+            end
+            write(io, colnames_of_rownames[ncol_row_header])
             if !isnothing(other_cols)
                 for i = 1:noc
                     write(io, " & ", other_col_names[i])
@@ -359,10 +363,14 @@ function print2tex(μ::AbstractVector{<:AbstractMatrix}, σ::AbstractVector{<:Ab
             # σi = round.(σ[i], sigdigits = sigdigits)
             m = size(μ[i], 1)
             for j = 1:m
-                if j == 1
-                    write(io, raw"\multirow{", "$m}{*}{", rownames[i], "}")
+                if ncol_row_header > 1
+                    if j == 1
+                        write(io, raw"\multirow{", "$m}{*}{", rownames[i], "}")
+                    end
+                    write(io, "&", subrownames[j])
+                else
+                    write(io, subrownames[j])
                 end
-                write(io, "&", subrownames[j])
                 for ii in 1:noc
                     if isnothing(other_cols_σ)
                         write(io, "& $(@sprintf "%.2e" other_cols[i][j, ii])")
