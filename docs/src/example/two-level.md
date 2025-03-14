@@ -12,6 +12,12 @@ tex2png("col2.tex")
 
 ![](col2.png)
 
+!!! tip "Set png background"
+    By default, the background of PNG images rendered from `tex2png` is transparent, which may make the table hard to read in some image viewers (e.g., VS Code). As a workaround, you can set the background to "white", but this requires `convert` to be installed.
+    ```julia
+    tex2png("col2.tex", background = "white")
+    ```
+
 ```@example 1
 a = randn(2)
 b = [randn(2) for i = 1:2, j = 1:2]
