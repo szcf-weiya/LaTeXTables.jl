@@ -5,94 +5,94 @@ A = hcat(a, b)
 B = hcat(A, A)
 print2tex(B, [&quot;r1&quot;, &quot;r2&quot;], [&quot;col01&quot;, &quot;col02&quot;], subcolnames = [&quot;c1&quot;, &quot;c2&quot;, &quot;c3&quot;], file=&quot;col2.tex&quot;)
 tex2png(&quot;col2.tex&quot;)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">┌ Info: Downloading
-│   source = &quot;https://quicklatex.com/cache3/6e/ql_ff59b283860643fc138c68bade2a566e_l3.png&quot;
+│   source = &quot;https://quicklatex.com/cache3/2a/ql_4087a1e8f1f56830af8e2f029eda382a_l3.png&quot;
 │   dest = &quot;col2.png&quot;
 │   progress = 1.0
 │   time_taken = &quot;0.0 s&quot;
 │   time_remaining = &quot;0.0 s&quot;
 │   average_speed = &quot;∞ B/s&quot;
-│   downloaded = &quot;5.587 KiB&quot;
+│   downloaded = &quot;5.730 KiB&quot;
 │   remaining = &quot;0 bytes&quot;
-└   total = &quot;5.587 KiB&quot;</code></pre><p><img src="../col2.png" alt/></p><div class="admonition is-success"><header class="admonition-header">Set png background</header><div class="admonition-body"><p>By default, the background of PNG images rendered from <code>tex2png</code> is transparent, which may make the table hard to read in some image viewers (e.g., VS Code). As a workaround, you can set the background to &quot;white&quot;, but this requires <code>convert</code> to be installed.</p><pre><code class="language-julia hljs">tex2png(&quot;col2.tex&quot;, background = &quot;white&quot;)</code></pre></div></div><pre><code class="language-julia hljs">a = randn(2)
+└   total = &quot;5.730 KiB&quot;</code></pre><p><img src="../col2.png" alt/></p><div class="admonition is-success"><header class="admonition-header">Set png background</header><div class="admonition-body"><p>By default, the background of PNG images rendered from <code>tex2png</code> is transparent, which may make the table hard to read in some image viewers (e.g., VS Code). As a workaround, you can set the background to &quot;white&quot;, but this requires <code>convert</code> to be installed.</p><pre><code class="language-julia hljs">tex2png(&quot;col2.tex&quot;, background = &quot;white&quot;)</code></pre></div></div><pre><code class="language-julia hljs">a = randn(2)
 b = [randn(2) for i = 1:2, j = 1:2]
 A = hcat(a, b)
 B = hcat(A, A)
 C = [B, B]
 print2tex(C, [&quot;r01&quot;, &quot;r02&quot;], [&quot;col01&quot;, &quot;col02&quot;], subcolnames = [&quot;c1&quot;, &quot;c2&quot;, &quot;c3&quot;], subrownames = [&quot;r1&quot;, &quot;r2&quot;], colnames_of_rownames = [&quot;level0&quot;, &quot;level1&quot;], file=&quot;row2col2.tex&quot;)
 tex2png(&quot;row2col2.tex&quot;)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">┌ Info: Downloading
-│   source = &quot;https://quicklatex.com/cache3/b4/ql_962dee120e3b9a476d4532e069af5bb4_l3.png&quot;
+│   source = &quot;https://quicklatex.com/cache3/0a/ql_ceae19861506fc2449108052799dae0a_l3.png&quot;
 │   dest = &quot;row2col2.png&quot;
 │   progress = 1.0
 │   time_taken = &quot;0.0 s&quot;
 │   time_remaining = &quot;0.0 s&quot;
 │   average_speed = &quot;∞ B/s&quot;
-│   downloaded = &quot;10.112 KiB&quot;
+│   downloaded = &quot;10.185 KiB&quot;
 │   remaining = &quot;0 bytes&quot;
-└   total = &quot;10.112 KiB&quot;</code></pre><p><img src="../row2col2.png" alt/></p><h2 id="Share-rownames:-combine-two-tables"><a class="docs-heading-anchor" href="#Share-rownames:-combine-two-tables">Share rownames: combine two tables</a><a id="Share-rownames:-combine-two-tables-1"></a><a class="docs-heading-anchor-permalink" href="#Share-rownames:-combine-two-tables" title="Permalink"></a></h2><pre><code class="language-julia hljs">a = randn(2)
+└   total = &quot;10.185 KiB&quot;</code></pre><p><img src="../row2col2.png" alt/></p><h2 id="Share-rownames:-combine-two-tables"><a class="docs-heading-anchor" href="#Share-rownames:-combine-two-tables">Share rownames: combine two tables</a><a id="Share-rownames:-combine-two-tables-1"></a><a class="docs-heading-anchor-permalink" href="#Share-rownames:-combine-two-tables" title="Permalink"></a></h2><pre><code class="language-julia hljs">a = randn(2)
 b = [randn(2) for i = 1:2, j = 1:2]
 A = hcat(a, b)
 A2 = hcat(a, b)
 print2tex(A, [&quot;A&quot;, &quot;B&quot;], [&quot;col1&quot;, &quot;col2&quot;, &quot;col3&quot;], A2 = A2, colnames2 = [&quot;COL1&quot;, &quot;col2&quot;, &quot;col3&quot;], file = &quot;ex02.tex&quot;)
 tex2png(&quot;ex02.tex&quot;)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">┌ Info: Downloading
-│   source = &quot;https://quicklatex.com/cache3/cd/ql_00a123264e4ba5fa25b316c63970f6cd_l3.png&quot;
+│   source = &quot;https://quicklatex.com/cache3/06/ql_504372acbbb5b444be14c80f31a73406_l3.png&quot;
 │   dest = &quot;ex02.png&quot;
 │   progress = 1.0
 │   time_taken = &quot;0.0 s&quot;
 │   time_remaining = &quot;0.0 s&quot;
 │   average_speed = &quot;∞ B/s&quot;
-│   downloaded = &quot;7.474 KiB&quot;
+│   downloaded = &quot;7.356 KiB&quot;
 │   remaining = &quot;0 bytes&quot;
-└   total = &quot;7.474 KiB&quot;</code></pre><p><img src="../ex02.png" alt/></p><h2 id="Two-level-rows-and-Two-level-columns"><a class="docs-heading-anchor" href="#Two-level-rows-and-Two-level-columns">Two-level rows and Two-level columns</a><a id="Two-level-rows-and-Two-level-columns-1"></a><a class="docs-heading-anchor-permalink" href="#Two-level-rows-and-Two-level-columns" title="Permalink"></a></h2><pre><code class="language-julia hljs">μ = [rand(3, 4), rand(3, 4)]
+└   total = &quot;7.356 KiB&quot;</code></pre><p><img src="../ex02.png" alt/></p><h2 id="Two-level-rows-and-Two-level-columns"><a class="docs-heading-anchor" href="#Two-level-rows-and-Two-level-columns">Two-level rows and Two-level columns</a><a id="Two-level-rows-and-Two-level-columns-1"></a><a class="docs-heading-anchor-permalink" href="#Two-level-rows-and-Two-level-columns" title="Permalink"></a></h2><pre><code class="language-julia hljs">μ = [rand(3, 4), rand(3, 4)]
 σ = [rand(3, 4), rand(3, 4)]
 print2tex(μ, σ, [&quot;A&quot;, &quot;B&quot;], [&quot;a&quot;, &quot;b&quot;], [&quot;1&quot;,&quot;2&quot;,&quot;3&quot;], [&quot;x&quot;, &quot;y&quot;], file = &quot;ex1.tex&quot;)
 tex2png(&quot;ex1.tex&quot;)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">noc = 0
 ┌ Info: Downloading
-│   source = &quot;https://quicklatex.com/cache3/30/ql_5053cea1bc3b727beafe7c7491a09430_l3.png&quot;
+│   source = &quot;https://quicklatex.com/cache3/d5/ql_1d828de0c612fa35b6b3ec3c8b3e94d5_l3.png&quot;
 │   dest = &quot;ex1.png&quot;
 │   progress = 1.0
 │   time_taken = &quot;0.0 s&quot;
 │   time_remaining = &quot;0.0 s&quot;
 │   average_speed = &quot;∞ B/s&quot;
-│   downloaded = &quot;10.696 KiB&quot;
+│   downloaded = &quot;10.778 KiB&quot;
 │   remaining = &quot;0 bytes&quot;
-└   total = &quot;10.696 KiB&quot;</code></pre><p><img src="../ex1.png" alt/></p><div class="admonition is-success"><header class="admonition-header">the first level of column can be reduced</header><div class="admonition-body"><p>If there is only one level column, we can pass an empty string <code>[&quot;&quot;]</code> for the first level column name.</p></div></div><pre><code class="language-julia hljs">print2tex(μ, σ, [&quot;A&quot;, &quot;B&quot;], [&quot;&quot;], [&quot;1&quot;,&quot;2&quot;,&quot;3&quot;], [&quot;x&quot;, &quot;y&quot;, &quot;z&quot;, &quot;w&quot;], file = &quot;ex1r.tex&quot;)
+└   total = &quot;10.778 KiB&quot;</code></pre><p><img src="../ex1.png" alt/></p><div class="admonition is-success"><header class="admonition-header">the first level of column can be reduced</header><div class="admonition-body"><p>If there is only one level column, we can pass an empty string <code>[&quot;&quot;]</code> for the first level column name.</p></div></div><pre><code class="language-julia hljs">print2tex(μ, σ, [&quot;A&quot;, &quot;B&quot;], [&quot;&quot;], [&quot;1&quot;,&quot;2&quot;,&quot;3&quot;], [&quot;x&quot;, &quot;y&quot;, &quot;z&quot;, &quot;w&quot;], file = &quot;ex1r.tex&quot;)
 tex2png(&quot;ex1r.tex&quot;)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">noc = 0
 ┌ Info: Downloading
-│   source = &quot;https://quicklatex.com/cache3/bc/ql_128c85f49f96fa432bbad89b87c2bebc_l3.png&quot;
+│   source = &quot;https://quicklatex.com/cache3/ad/ql_2830579829bbd718e89d2eeca57543ad_l3.png&quot;
 │   dest = &quot;ex1r.png&quot;
 │   progress = 1.0
 │   time_taken = &quot;0.0 s&quot;
 │   time_remaining = &quot;0.0 s&quot;
-│   average_speed = &quot;∞ B/s&quot;
-│   downloaded = &quot;10.340 KiB&quot;
+│   average_speed = &quot;10.181 MiB/s&quot;
+│   downloaded = &quot;10.426 KiB&quot;
 │   remaining = &quot;0 bytes&quot;
-└   total = &quot;10.340 KiB&quot;</code></pre><p><img src="../ex1r.png" alt/></p><div class="admonition is-success"><header class="admonition-header">superscript</header><div class="admonition-body"><p>We can add superscript, such as the rank, for each cell with the argument <code>rank_sup</code>.</p></div></div><pre><code class="language-julia hljs">rk = [hcat([sortperm(sortperm(x)) for x in eachcol(μ[1])]...),
+└   total = &quot;10.426 KiB&quot;</code></pre><p><img src="../ex1r.png" alt/></p><div class="admonition is-success"><header class="admonition-header">superscript</header><div class="admonition-body"><p>We can add superscript, such as the rank, for each cell with the argument <code>rank_sup</code>.</p></div></div><pre><code class="language-julia hljs">rk = [hcat([sortperm(sortperm(x)) for x in eachcol(μ[1])]...),
       hcat([sortperm(sortperm(x)) for x in eachcol(μ[2])]...)]
 print2tex(μ, σ, [&quot;A&quot;, &quot;B&quot;], [&quot;&quot;], [&quot;1&quot;,&quot;2&quot;,&quot;3&quot;], [&quot;x&quot;, &quot;y&quot;, &quot;z&quot;, &quot;w&quot;], file = &quot;ex1rank.tex&quot;, rank_sup = rk)
 tex2png(&quot;ex1rank.tex&quot;)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">noc = 0
 ┌ Info: Downloading
-│   source = &quot;https://quicklatex.com/cache3/9d/ql_62548f9d6574b129e7fb9a1aa6bbeb9d_l3.png&quot;
+│   source = &quot;https://quicklatex.com/cache3/d9/ql_b0e8b18aa9c7a0734070504344f861d9_l3.png&quot;
 │   dest = &quot;ex1rank.png&quot;
 │   progress = 1.0
 │   time_taken = &quot;0.0 s&quot;
 │   time_remaining = &quot;0.0 s&quot;
 │   average_speed = &quot;∞ B/s&quot;
-│   downloaded = &quot;12.797 KiB&quot;
+│   downloaded = &quot;12.800 KiB&quot;
 │   remaining = &quot;0 bytes&quot;
-└   total = &quot;12.797 KiB&quot;</code></pre><h3 id="Add-columns-on-the-left"><a class="docs-heading-anchor" href="#Add-columns-on-the-left">Add columns on the left</a><a id="Add-columns-on-the-left-1"></a><a class="docs-heading-anchor-permalink" href="#Add-columns-on-the-left" title="Permalink"></a></h3><pre><code class="language-julia hljs">others = [rand(3, 1), rand(3, 1)]
+└   total = &quot;12.800 KiB&quot;</code></pre><h3 id="Add-columns-on-the-left"><a class="docs-heading-anchor" href="#Add-columns-on-the-left">Add columns on the left</a><a id="Add-columns-on-the-left-1"></a><a class="docs-heading-anchor-permalink" href="#Add-columns-on-the-left" title="Permalink"></a></h3><pre><code class="language-julia hljs">others = [rand(3, 1), rand(3, 1)]
 others_σ = [rand(3, 1), rand(3, 1)]
 print2tex(μ, σ, [&quot;A&quot;, &quot;B&quot;], [&quot;a&quot;, &quot;b&quot;], [&quot;1&quot;,&quot;2&quot;,&quot;3&quot;], [&quot;x&quot;, &quot;y&quot;], file = &quot;ex2.tex&quot;, other_cols = others, other_col_names = [&quot;other&quot;], other_cols_σ = others_σ)
 tex2png(&quot;ex2.tex&quot;)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">noc = 1
 ┌ Info: Downloading
-│   source = &quot;https://quicklatex.com/cache3/47/ql_d4e1ed523756fc25977b0ea9f319db47_l3.png&quot;
+│   source = &quot;https://quicklatex.com/cache3/d2/ql_0a0926cfd6e82ed4978c3c5366c322d2_l3.png&quot;
 │   dest = &quot;ex2.png&quot;
 │   progress = 1.0
 │   time_taken = &quot;0.0 s&quot;
 │   time_remaining = &quot;0.0 s&quot;
 │   average_speed = &quot;∞ B/s&quot;
-│   downloaded = &quot;13.910 KiB&quot;
+│   downloaded = &quot;13.771 KiB&quot;
 │   remaining = &quot;0 bytes&quot;
-└   total = &quot;13.910 KiB&quot;</code></pre><p><img src="../ex2.png" alt/></p><h3 id="Add-columns-on-the-right"><a class="docs-heading-anchor" href="#Add-columns-on-the-right">Add columns on the right</a><a id="Add-columns-on-the-right-1"></a><a class="docs-heading-anchor-permalink" href="#Add-columns-on-the-right" title="Permalink"></a></h3><pre><code class="language-julia hljs">right = [[rand(3), rand(3)]]
+└   total = &quot;13.771 KiB&quot;</code></pre><p><img src="../ex2.png" alt/></p><h3 id="Add-columns-on-the-right"><a class="docs-heading-anchor" href="#Add-columns-on-the-right">Add columns on the right</a><a id="Add-columns-on-the-right-1"></a><a class="docs-heading-anchor-permalink" href="#Add-columns-on-the-right" title="Permalink"></a></h3><pre><code class="language-julia hljs">right = [[rand(3), rand(3)]]
 print2tex(μ, σ, [&quot;A&quot;, &quot;B&quot;], [&quot;a&quot;, &quot;b&quot;], [&quot;1&quot;,&quot;2&quot;,&quot;3&quot;], [&quot;x&quot;, &quot;y&quot;], file = &quot;ex3.tex&quot;,
                                                                 other_cols = others,
                                                                 other_col_names = [&quot;other&quot;],
@@ -101,15 +101,15 @@ print2tex(μ, σ, [&quot;A&quot;, &quot;B&quot;], [&quot;a&quot;, &quot;b&quot;]
                                                                 right_col_names = [&quot;right&quot;])
 tex2png(&quot;ex3.tex&quot;)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">noc = 1
 ┌ Info: Downloading
-│   source = &quot;https://quicklatex.com/cache3/9a/ql_1ccf9382b6d7988e04557b4135ddcc9a_l3.png&quot;
+│   source = &quot;https://quicklatex.com/cache3/7b/ql_576d9f09bc2a2cf74e688ccfc07a0a7b_l3.png&quot;
 │   dest = &quot;ex3.png&quot;
 │   progress = 1.0
 │   time_taken = &quot;0.0 s&quot;
 │   time_remaining = &quot;0.0 s&quot;
 │   average_speed = &quot;∞ B/s&quot;
-│   downloaded = &quot;16.870 KiB&quot;
+│   downloaded = &quot;16.913 KiB&quot;
 │   remaining = &quot;0 bytes&quot;
-└   total = &quot;16.870 KiB&quot;</code></pre><p><img src="../ex3.png" alt/></p><p>Particularly, if the column is p-value, we can annotate the significance with star symbols, like <code>?symnum</code> in R.</p><pre><code class="language-julia hljs">pval = [star_pval.(right[1] / 100)]
+└   total = &quot;16.913 KiB&quot;</code></pre><p><img src="../ex3.png" alt/></p><p>Particularly, if the column is p-value, we can annotate the significance with star symbols, like <code>?symnum</code> in R.</p><pre><code class="language-julia hljs">pval = [star_pval.(right[1] / 100)]
 print2tex(μ, σ, [&quot;A&quot;, &quot;B&quot;], [&quot;a&quot;, &quot;b&quot;], [&quot;1&quot;,&quot;2&quot;,&quot;3&quot;], [&quot;x&quot;, &quot;y&quot;], file = &quot;ex4.tex&quot;,
                                                                 other_cols = others,
                                                                 other_col_names = [&quot;other&quot;],
@@ -117,25 +117,25 @@ print2tex(μ, σ, [&quot;A&quot;, &quot;B&quot;], [&quot;a&quot;, &quot;b&quot;]
                                                                 right_cols = pval, right_col_names = [&quot;pval&quot;])
 tex2png(&quot;ex4.tex&quot;)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">noc = 1
 ┌ Info: Downloading
-│   source = &quot;https://quicklatex.com/cache3/53/ql_bee6c491e51b4fcfb22becb2afed5d53_l3.png&quot;
+│   source = &quot;https://quicklatex.com/cache3/53/ql_2967dfe33b64f1f820e1b3d3e067f453_l3.png&quot;
 │   dest = &quot;ex4.png&quot;
 │   progress = 1.0
 │   time_taken = &quot;0.0 s&quot;
 │   time_remaining = &quot;0.0 s&quot;
-│   average_speed = &quot;∞ B/s&quot;
-│   downloaded = &quot;15.954 KiB&quot;
+│   average_speed = &quot;15.477 MiB/s&quot;
+│   downloaded = &quot;15.849 KiB&quot;
 │   remaining = &quot;0 bytes&quot;
-└   total = &quot;15.954 KiB&quot;</code></pre><p><img src="../ex4.png" alt/></p><h3 id="Reduce-to-One-Level"><a class="docs-heading-anchor" href="#Reduce-to-One-Level">Reduce to One-Level</a><a id="Reduce-to-One-Level-1"></a><a class="docs-heading-anchor-permalink" href="#Reduce-to-One-Level" title="Permalink"></a></h3><pre><code class="language-julia hljs">μ = [rand(3, 2)]
+└   total = &quot;15.849 KiB&quot;</code></pre><p><img src="../ex4.png" alt/></p><h3 id="Reduce-to-One-Level"><a class="docs-heading-anchor" href="#Reduce-to-One-Level">Reduce to One-Level</a><a id="Reduce-to-One-Level-1"></a><a class="docs-heading-anchor-permalink" href="#Reduce-to-One-Level" title="Permalink"></a></h3><pre><code class="language-julia hljs">μ = [rand(3, 2)]
 σ = [rand(3, 2)]
 print2tex(μ, σ, [&quot;&quot;], [&quot;&quot;], [&quot;M1&quot;, &quot;M2&quot;, &quot;M3&quot;], [&quot;C1&quot;, &quot;C2&quot;], colnames_of_rownames = [&quot;Method&quot;], file = &quot;ex5.tex&quot;)
 tex2png(&quot;ex5.tex&quot;)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">noc = 0
 ┌ Info: Downloading
-│   source = &quot;https://quicklatex.com/cache3/e6/ql_a0eca4437c7e3a3c36044f7a735cc2e6_l3.png&quot;
+│   source = &quot;https://quicklatex.com/cache3/07/ql_9ad7ca9e27f02e604e0a78d015a03507_l3.png&quot;
 │   dest = &quot;ex5.png&quot;
 │   progress = 1.0
 │   time_taken = &quot;0.0 s&quot;
 │   time_remaining = &quot;0.0 s&quot;
 │   average_speed = &quot;∞ B/s&quot;
-│   downloaded = &quot;4.233 KiB&quot;
+│   downloaded = &quot;4.288 KiB&quot;
 │   remaining = &quot;0 bytes&quot;
-└   total = &quot;4.233 KiB&quot;</code></pre><p><img src="../ex5.png" alt/></p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../one-level/">« One Level</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.8.1 on <span class="colophon-date" title="Friday 14 March 2025 21:33">Friday 14 March 2025</span>. Using Julia version 1.7.3.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+└   total = &quot;4.288 KiB&quot;</code></pre><p><img src="../ex5.png" alt/></p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../one-level/">« One Level</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.8.1 on <span class="colophon-date" title="Friday 14 March 2025 21:35">Friday 14 March 2025</span>. Using Julia version 1.7.3.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
